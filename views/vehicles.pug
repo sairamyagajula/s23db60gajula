@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  h1= title
+  - var results =[{name:"AUDI", mileage:"30000", color:"Black"},{name:"BMW", mileage:"200000", color:"Blue"},{name:"Thar", mileage:"300000", color:"red"}]
+  div(class="container-fluid")
+  div(class="row")
+   each r,index  in results 
+    div(class="col-sm-2" onclick =`buy(${index})`) #{r.name}, #{r.mileage}, #{r.color}
+    script.
+        function buy(a)
+        {
+            alert(`You purchased Item ${a+1}`)
+        }
+ 
+    
+
+
+  
