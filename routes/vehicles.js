@@ -1,9 +1,7 @@
 var express = require('express');
-var router = express.Router();
+var vehicles_controller = require('../controllers/vehicles');
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('vehicles', { title: 'Search Results Vehicles' });
-});
+router.get('/', vehicles_controller.vehicles_view_all_Page );
 
 module.exports = router;
