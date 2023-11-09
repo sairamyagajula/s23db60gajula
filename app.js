@@ -58,6 +58,7 @@ var vehiclesRouter = require('./routes/vehicles');
 var boardRouter = require('./routes/board');
 var chooseRouter = require('./routes/choose');
 var resourceRouter = require("./routes/resource");
+
 var app = express();
 
 // view engine setup
