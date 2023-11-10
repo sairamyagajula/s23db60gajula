@@ -1,3 +1,4 @@
+const vehicles = require("../models/vehicles");
 var Vehicles = require("../models/vehicles");
 
 // List of all Vehicles
@@ -12,10 +13,17 @@ exports.vehicles_list = async function (req, res) {
     }
 };
 
-// for a specific Vehicles.
-exports.vehicles_detail = function (req, res) {
-    res.send('NOT IMPLEMENTED: Vehicles detail: ' + req.params.id);
-};
+exports.vehicles_detail = async function(req, res) {
+    console.log("detail" + req.params.id)
+    try {
+    result = await vehicles.findById( req.params.id)
+    res.send(result)
+    } catch (error) {
+    res.status(500)
+    res.send(`{"error": document for id ${req.params.id} not found`);
+    }
+    };
+    
 
 // Handle Vehicles create on POST.
 exports.vehicles_create_post = async function (req, res) {
@@ -43,10 +51,24 @@ exports.vehicles_delete = function (req, res) {
     res.send('NOT IMPLEMENTED: Vehicles delete DELETE ' + req.params.id);
 };
 
-// Handle Vehicles update form on PUT.
-exports.vehicles_update_put = function (req, res) {
-    res.send('NOT IMPLEMENTED: Vehicles update PUT' + req.params.id);
-};
+exports.vehicles_update_put = async function(req, res) {
+    console.log(`update on id ${req.params.id} with body
+    ${JSON.stringify(req.body)}`)
+    try {
+    let toUpdate = await vehicles.findById( req.params.id)
+    // Do updates of properties
+    if(req.body.name) toUpdate.name = req.body.name;
+    if(req.body.mileage) toUpdate.mileage = req.body.mileage;
+    if(req.body.color) toUpdate.color = req.body.color;
+    let result = await toUpdate.save();
+    console.log("Sucess " + result)
+    res.send(result)
+    } catch (err) {
+    res.status(500)
+    res.send(`{"error": ${err}: Update for id ${req.params.id}
+    failed`);
+    }
+    };
 
 // VIEWS
 // Handle a show all view
