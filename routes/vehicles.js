@@ -6,3 +6,4 @@ var router = express.Router();
 router.get('/', vehicles_controller.vehicles_view_all_Page );
 
 module.exports = router;
+
