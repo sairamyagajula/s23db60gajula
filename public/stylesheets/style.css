@@ -8,9 +8,23 @@ a {
 }
 
 .vehiclesAttr {
-  background-color:rgb(241, 158, 127);
+  background-color:aquamarine;
   width: 120px;
   }
+.vehiclesAttr1 {
+  background-color:burlywood;
+  width: 120px;
+  }
+
+.vehiclesAttr2{
+  background-color:rgb(140, 222, 110);
+  width: 120px;
+  }
+
+    .vehiclesAttr3 {
+      background-color:rgb(191, 137, 241);
+      width: 120px;
+      }
 
 
   
