@@ -10,3 +10,5 @@ module.exports = router;
 /* GET detail vehicles page */
 router.get('/detail', vehicles_controller.vehicles_view_one_Page);
 
+/* GET create vehicle page */
+router.get('/create', vehicles_controller.vehicles_create_Page);
