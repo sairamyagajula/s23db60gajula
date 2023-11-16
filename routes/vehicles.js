@@ -12,3 +12,6 @@ router.get('/detail', vehicles_controller.vehicles_view_one_Page);
 
 /* GET create vehicle page */
 router.get('/create', vehicles_controller.vehicles_create_Page);
+
+/* GET create update page */
+router.get('/update', vehicles_controller.vehicle_update_Page);

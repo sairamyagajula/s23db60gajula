@@ -124,4 +124,16 @@ exports.vehicles_view_one_Page = async function(req, res) {
         }
        };
 
-    
+// Handle building the view for updating a costume.
+// query provides the id
+exports.vehicle_update_Page = async function (req, res) {
+    console.log("update view for item " + req.query.id)
+    try {
+        let result = await Vehicles.findById(req.query.id)
+        res.render('vehiclesupdate', { title: 'Vehicle Update', toShow: result });
+    }
+    catch (err) {
+        res.status(500)
+        res.send(`{'error': '${err}'}`);
+    }
+};
