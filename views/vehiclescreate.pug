@@ -2,13 +2,13 @@ extends layout
 block content
     h1= title
     form(id='VehiclesForm', action="/resource/vehicles", method="POST")
-        div.form-group
+        div.form-group-create
             label.vehiclesAttr(for='name') Vehicle name
             input#name(type='text', name='name')
-        div.form-group
+        div.form-group-create
             label.vehiclesAttr(for='mileage') Vehicle mileage
             input#mileage(type='number', name='mileage')
-        div.form-group
+        div.form-group-create
             label.vehiclesAttr(for='color') Vehicle color
             input#color(type='text', name='color')
         input(type="submit")
