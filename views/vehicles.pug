@@ -4,16 +4,17 @@ block content
   h1= title
   - let items = results
   div(class="container-fluid")
-  div(class="row")
-   each r,index  in results 
-    div(class="col-sm-2" onclick =`buy(${index})`) #{r.name}, #{r.mileage}, #{r.color}
-    script.
-        function buy(a)
-        {
-            alert(`You purchased Item ${a+1}`)
-        }
- 
-    
+    div(class="row")
+      each r, index in results
+        div(class="col-sm-2", onclick=`buy(${index})`) #{r.name}, #{r.mileage}, #{r.color}
+        - let destination = `/vehicles/update?id=${r._id}` // Fix variable name and template string
+        div(class="col-sm-2", onclick=`buy(${r})`) #{r.name}, #{r.mileage}, #{r.color} // Fix variable name
+        button.btn(class="btn-primary ml-1", onclick=`dispatch('${destination}')`) Update
+  script.
+    function buy(a) {
+      alert(`You purchased Item ${results[a].name}`); // Fix the alert message
+    }
 
-
-  
+    function dispatch(path) {
+      window.location.href = path;
+    }
